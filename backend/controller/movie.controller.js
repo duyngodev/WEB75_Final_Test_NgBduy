@@ -5,7 +5,7 @@ import { cloudinary } from "../server.js";
 /*    
 |   Method: GET
 |   Desc:   get all movies from DB, 
-|           get movies by query [name]
+|           get movies by query [name] - FUZZY SEARCHING
 |   Route:  /movies/?search=[name]
 |   Public
 */
