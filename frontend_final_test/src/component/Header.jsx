@@ -7,10 +7,9 @@ const Header = () => {
   const { input, setInput, data, setData } = useContext(Context);
   const searchHandler = async () => {
     await axios
-      // .get(
-      //   `https://web75-final-test-ngbduy.onrender.com/movies/?search=${input}`
-      // )
-      .get(`http://localhost:5000/movies/?search=${input}}`)
+      .get(
+        `https://web75-final-test-ngbduy.onrender.com/movies/?search=${input}`
+      )
       .then((res) => {
         console.log(res);
         setData(res.data.movies);
@@ -21,7 +20,11 @@ const Header = () => {
   return (
     <header>
       <DehazeIcon />
-      <img src="./src/assets/MOVIEUI.png" type="image" alt="logo" />
+      <img
+        src="https://res.cloudinary.com/web75-ky3-finaltest/image/upload/v1710174945/MOVIEUI_cb0dif.png"
+        type="image"
+        alt="logo"
+      />
       <div className="searchBox">
         <input
           type="text"
