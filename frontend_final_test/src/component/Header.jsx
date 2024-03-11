@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { Context } from "../utils/context.jsx";
 import axios from "axios";
 const Header = () => {
-  const { input, setInput, setData } = useContext(Context);
+  const { input, setInput, data, setData } = useContext(Context);
   const searchHandler = async () => {
     await axios
       .get(
@@ -15,6 +15,7 @@ const Header = () => {
       })
       .catch((err) => console.log(err));
   };
+  console.log(data);
   return (
     <header>
       <DehazeIcon />

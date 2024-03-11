@@ -23,8 +23,8 @@ const getAllMovies = async (req, res) => {
         distance: 500,
       };
       const fuse = new Fuse(movies, fuseOptions);
-      movies = fuse.search(keyword);
-      res.status(200).send({ total: movies.length, movies });
+      const result = fuse.search(keyword);
+      res.status(200).send({ total: result.length, movies: result });
     } else {
       res.status(200).send({ total: movies.length, movies });
     }
