@@ -24,6 +24,7 @@ const getAllMovies = async (req, res) => {
       };
       const fuse = new Fuse(movies, fuseOptions);
       const result = fuse.search(keyword);
+      console.log(result)
       res.status(200).send({ total: result.length, movies: result });
     } else {
       res.status(200).send({ total: movies.length, movies });

@@ -15,8 +15,8 @@ const Card = ({ movie }) => {
         <div className="imgWrapper">
           <img src={`${movie.image.image_url}`} alt="img" />
         </div>
-        <h3>{movie.name}</h3>
-        <p>
+        <h3 style={{ fontSize: "0.9rem" }}>{movie.name}</h3>
+        <p style={{ fontSize: "0.8rem" }}>
           {movie.time} phút {movie.year}
         </p>
       </div>

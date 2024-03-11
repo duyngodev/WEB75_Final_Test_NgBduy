@@ -32,11 +32,19 @@ const Body = () => {
         className="mySwiper">
         {data &&
           data.map((movie) => {
-            return (
-              <SwiperSlide className="swiperSlide" key={movie._id}>
-                <Card movie={movie}></Card>
-              </SwiperSlide>
-            );
+            if (!movie.item) {
+              return (
+                <SwiperSlide className="swiperSlide" key={movie._id}>
+                  <Card movie={movie}></Card>
+                </SwiperSlide>
+              );
+            } else if (movie.item) {
+              return (
+                <SwiperSlide className="swiperSlide" key={movie.item._id}>
+                  <Card movie={movie.item}></Card>
+                </SwiperSlide>
+              );
+            }
           })}
       </Swiper>
       {state.isOpen && <MovieDetail />}

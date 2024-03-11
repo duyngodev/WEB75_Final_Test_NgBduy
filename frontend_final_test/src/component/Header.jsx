@@ -7,10 +7,12 @@ const Header = () => {
   const { input, setInput, data, setData } = useContext(Context);
   const searchHandler = async () => {
     await axios
-      .get(
-        `https://web75-final-test-ngbduy.onrender.com/movies/?search=${input}`
-      )
+      // .get(
+      //   `https://web75-final-test-ngbduy.onrender.com/movies/?search=${input}`
+      // )
+      .get(`http://localhost:5000/movies/?search=${input}}`)
       .then((res) => {
+        console.log(res);
         setData(res.data.movies);
       })
       .catch((err) => console.log(err));
