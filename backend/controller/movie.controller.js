@@ -12,11 +12,10 @@ import { cloudinary } from "../server.js";
 const getAllMovies = async (req, res) => {
   try {
     const { search } = req.query;
-    const movies = await movieModel.find({});
+    let movies = await movieModel.find({});
     if (movies.length === 0) throw new Error("No movies were found");
     if (search) {
       const keyword = search.replace(/[^a-z0-9]/gi, "").replace(/  /g, " ");
-      console.log(keyword);
       const fuseOptions = {
         keys: ["name"],
         location: 0,
@@ -24,8 +23,8 @@ const getAllMovies = async (req, res) => {
         distance: 500,
       };
       const fuse = new Fuse(movies, fuseOptions);
-      const result = fuse.search(keyword);
-      res.status(200).send({ total: result.length, result });
+      movies = fuse.search(keyword);
+      res.status(200).send({ total: movies.length, movies });
     } else {
       res.status(200).send({ total: movies.length, movies });
     }

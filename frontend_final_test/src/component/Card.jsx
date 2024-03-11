@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { Context } from "../utils/context.jsx";
 
 const Card = ({ movie }) => {
-  const [popup, setPopup] = useState(true);
-  console.log(movie);
+  const { dispatch } = useContext(Context);
+  const clickHandler = () => {
+    dispatch({
+      type: "OPEN",
+      payload: movie,
+    });
+  };
   return (
-    <>
-      {popup && <div className="popUpWrapper">asd</div>}
+    <div onClick={clickHandler}>
       <div className="card">
         <div className="imgWrapper">
           <img src={`${movie.image.image_url}`} alt="img" />
@@ -15,7 +20,7 @@ const Card = ({ movie }) => {
           {movie.time} phút {movie.year}
         </p>
       </div>
-    </>
+    </div>
   );
 };
 
